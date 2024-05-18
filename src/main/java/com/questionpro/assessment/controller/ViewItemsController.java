@@ -1,12 +1,14 @@
 package com.questionpro.assessment.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/qpassessment")
 public class ViewItemsController {
 
-    @GetMapping
+    @GetMapping("/items")
     void view(){
 
     }
