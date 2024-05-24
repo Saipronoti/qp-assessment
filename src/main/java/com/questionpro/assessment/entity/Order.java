@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Order {
 
-        private int totalPrice;
+        private int orderId;
         private List<Item> items;
 
     public boolean addItem(Item item) {
