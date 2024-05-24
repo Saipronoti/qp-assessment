@@ -28,11 +28,12 @@ public class RolesSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
 
         httpSecurity.authorizeHttpRequests(configure->
-                configure.requestMatchers(HttpMethod.POST,"/qp-assessment/groceryitems").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET,"/qp-assessment/groceryitems").hasAnyRole("ADMIN","USER")
-                        .requestMatchers(HttpMethod.GET,"/qp-assessment/groceryitems/**").hasAnyRole("ADMIN","USER")
-                        .requestMatchers(HttpMethod.PUT,"/qp-assessment/groceryitems").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE,"/qp-assessment/groceryitems").hasRole("ADMIN")
+                configure.requestMatchers(HttpMethod.POST,"/qp-assessment/grocery/items").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET,"/qp-assessment/grocery/items").hasAnyRole("ADMIN","USER")
+                        .requestMatchers(HttpMethod.GET,"/qp-assessment/grocery/items/**").hasAnyRole("ADMIN","USER")
+                        .requestMatchers(HttpMethod.PUT,"/qp-assessment/grocery/items").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,"/qp-assessment/grocery/items").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/qp-assessment/grocery/orders").hasRole("USER")
         );
 
         httpSecurity.httpBasic(Customizer.withDefaults());
