@@ -3,12 +3,12 @@ package com.questionpro.assessment.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="groceryitems")
-public class Item {
+@Table(name="inventoryItems")
+public class InventoryItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private String groceryItemId;
+    @Column(name="item_id")
+    private String itemId;
     @Column(name="item_name")
     private String name;
     @Column(name="item_price")
@@ -16,22 +16,22 @@ public class Item {
     @Column(name="item_count")
     private int availableItemCount;
 
-    public Item() {
+    public InventoryItems() {
     }
 
-    public Item(String groceryItemId, String name, double price, int availableItemCount) {
-        this.groceryItemId = groceryItemId;
+    public InventoryItems(String itemId, String name, double price, int availableItemCount) {
+        this.itemId = itemId;
         this.name = name;
         this.price = price;
         this.availableItemCount = availableItemCount;
     }
 
-    public String getGroceryItemId() {
-        return groceryItemId;
+    public String getItemId() {
+        return itemId;
     }
 
-    public void setGroceryItemId(String groceryItemId) {
-        this.groceryItemId = groceryItemId;
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public String getName() {

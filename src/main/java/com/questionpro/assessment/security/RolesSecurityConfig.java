@@ -31,9 +31,11 @@ public class RolesSecurityConfig {
                 configure.requestMatchers(HttpMethod.POST,"/qp-assessment/grocery/items").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/qp-assessment/grocery/items").hasAnyRole("ADMIN","USER")
                         .requestMatchers(HttpMethod.GET,"/qp-assessment/grocery/items/**").hasAnyRole("ADMIN","USER")
-                        .requestMatchers(HttpMethod.PUT,"/qp-assessment/grocery/items").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE,"/qp-assessment/grocery/items").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT,"/qp-assessment/grocery/items/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,"/qp-assessment/grocery/items/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/qp-assessment/grocery/orders").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST,"/qp-assessment/grocery/order").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET,"/qp-assessment/grocery/orders").hasRole("USER")
         );
 
         httpSecurity.httpBasic(Customizer.withDefaults());
