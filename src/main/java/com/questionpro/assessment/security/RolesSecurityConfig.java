@@ -27,7 +27,7 @@ public class RolesSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
 
-        /*httpSecurity.authorizeHttpRequests(configure->
+       /* httpSecurity.authorizeHttpRequests(configure->
                 configure.requestMatchers(HttpMethod.POST,"/qp-assessment/grocery/items").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/qp-assessment/grocery/items").hasAnyRole("ADMIN","USER")
                         .requestMatchers(HttpMethod.GET,"/qp-assessment/grocery/items/**").hasAnyRole("ADMIN","USER")

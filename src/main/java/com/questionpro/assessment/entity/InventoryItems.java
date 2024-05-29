@@ -1,6 +1,5 @@
 package com.questionpro.assessment.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ public class InventoryItems {
     private int availableItemCount;
 
     @OneToMany(mappedBy="inventoryItem", cascade = CascadeType.ALL)
-    //@JsonManagedReference
     List<OrderItems> orderItems = new ArrayList<>();
 
 

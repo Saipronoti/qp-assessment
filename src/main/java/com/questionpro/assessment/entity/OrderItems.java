@@ -1,34 +1,32 @@
 package com.questionpro.assessment.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="orderItems")
 public class OrderItems {
 
-    /*@EmbeddedId
-    private OrderItemKey orderItemKey;*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private int order_item_id;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", insertable=false, updatable=false)
+    @JsonIgnore
     GroceryOrder groceryOrder;
 
     @ManyToOne
-    @JoinColumn(name = "item_id", nullable = false)
-    @JsonBackReference
+    @JoinColumn(name = "item_id", insertable=false, updatable=false)
+    @JsonIgnore
     InventoryItems inventoryItem;
-    //@Column(name="order_id")
-    //@ManyToOne
-    //@JoinColumn(name = "order_id", insertable =  false, updatable = false)
-    /*int order_id;
+    @Column(name="order_id")
+    int order_id;
 
     @Column(name="item_id")
-    int item_id;*/
+    int item_id;
     @Column(name="item_quantity")
     int item_quantity;
 
@@ -41,7 +39,7 @@ public class OrderItems {
         this.inventoryItem = inventoryItem;
     }
 
-    public GroceryOrder getGroceryOrder() {
+   public GroceryOrder getGroceryOrder() {
         return groceryOrder;
     }
 
@@ -57,7 +55,7 @@ public class OrderItems {
         this.order_item_id = order_item_id;
     }
 
-    /*public int getOrder_id() {
+    public int getOrder_id() {
         return order_id;
     }
 
@@ -71,7 +69,7 @@ public class OrderItems {
 
     public void setItem_id(int item_id) {
         this.item_id = item_id;
-    }*/
+    }
 
     public int getItem_quantity() {
         return item_quantity;
@@ -83,8 +81,8 @@ public class OrderItems {
 
     public OrderItems(int order_item_id, GroceryOrder groceryOrder, InventoryItems inventoryItem, int item_quantity) {
         this.order_item_id = order_item_id;
-        this.groceryOrder = groceryOrder;
-        this.inventoryItem = inventoryItem;
+      //  this.groceryOrder = groceryOrder;
+      //  this.inventoryItem = inventoryItem;
         this.item_quantity = item_quantity;
     }
 
