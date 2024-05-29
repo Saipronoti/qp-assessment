@@ -1,8 +1,9 @@
 package com.questionpro.assessment.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 
 @Entity
 @Table(name="orderItems")
@@ -10,7 +11,6 @@ public class OrderItems {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private int order_item_id;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -20,12 +20,12 @@ public class OrderItems {
 
     @ManyToOne
     @JoinColumn(name = "item_id", insertable=false, updatable=false)
-    @JsonIgnore
     InventoryItems inventoryItem;
     @Column(name="order_id")
     int order_id;
 
     @Column(name="item_id")
+    @JsonIgnore
     int item_id;
     @Column(name="item_quantity")
     int item_quantity;
@@ -81,12 +81,13 @@ public class OrderItems {
 
     public OrderItems(int order_item_id, GroceryOrder groceryOrder, InventoryItems inventoryItem, int item_quantity) {
         this.order_item_id = order_item_id;
-      //  this.groceryOrder = groceryOrder;
-      //  this.inventoryItem = inventoryItem;
+        this.groceryOrder = groceryOrder;
+        this.inventoryItem = inventoryItem;
         this.item_quantity = item_quantity;
     }
 
     public OrderItems() {
         this(0, new GroceryOrder(), new InventoryItems(), 0);
     }
+
 }

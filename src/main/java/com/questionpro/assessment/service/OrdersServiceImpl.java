@@ -17,16 +17,15 @@ public class OrdersServiceImpl  implements  OrderService{
 
     @Autowired
     private OrderItemsRepository orderItemsRepository;
+
     @Override
     public GroceryOrder createOrder(List<OrderItems> orderItems) {
         System.out.println("inside create order service " + orderItems);
         GroceryOrder groceryOrder=new GroceryOrder();
         groceryOrder.setOrderItems(orderItems);
         orderRepo.save(groceryOrder);
-        for(OrderItems item:orderItems){
-            orderItemsRepository.save(item);
-        }
-
         return groceryOrder;
     }
+
+
 }

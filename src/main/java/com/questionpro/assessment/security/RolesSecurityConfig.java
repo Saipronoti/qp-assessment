@@ -27,15 +27,15 @@ public class RolesSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
 
-       /* httpSecurity.authorizeHttpRequests(configure->
+        httpSecurity.authorizeHttpRequests(configure->
                 configure.requestMatchers(HttpMethod.POST,"/qp-assessment/grocery/items").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/qp-assessment/grocery/items").hasAnyRole("ADMIN","USER")
                         .requestMatchers(HttpMethod.GET,"/qp-assessment/grocery/items/**").hasAnyRole("ADMIN","USER")
                         .requestMatchers(HttpMethod.PUT,"/qp-assessment/grocery/items/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/qp-assessment/grocery/items/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST,"/qp-assessment/grocery/*").hasRole("USER")
-                        .requestMatchers(HttpMethod.GET,"/qp-assessment/grocery/orders").hasRole("USER")
-        );*/
+                        .requestMatchers(HttpMethod.POST,"/qp/grocery/orders").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET,"/qp/grocery/orders").hasRole("USER")
+        );
 
         httpSecurity.httpBasic(Customizer.withDefaults());
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
